@@ -11,3 +11,9 @@ two:
   description: MyText
   image_url: MyString
   price: 9.99
+
+ruby:
+  title: Programming Ruby1.9
+  description: Ruby very good
+  price: 52.80
+  image_url: ruby.png

@@ -3,19 +3,70 @@
 	{
 		"selected_items":
 		[
+			[
+				"product",
+				"Products"
+			]
 		]
 	},
 	"buffers":
 	[
+		{
+			"file": "app/models/product.rb",
+			"settings":
+			{
+				"buffer_size": 350,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/views/products/index.html.erb",
+			"settings":
+			{
+				"buffer_size": 732,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "test/functional/products_controller_test.rb",
+			"settings":
+			{
+				"buffer_size": 1174,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "#coding: utf-8\nrequire 'test_helper'\n\nclass ProductTest < ActiveSupport::TestCase\n\n	fixtures :products\n	\n	test \"product 属性有效验证不能为空!\" do\n		product = Product.new\n		assert product.invalid?\n		assert product.errors[:title].any?\n		assert product.errors[:description].any?\n		assert product.errors[:price].any?\n		assert product.errors[:image_url].any?\n	end\n\n	test \"product 价格有效性验证\" do\n		product = Product.new(:title => \"My Book Title\",\n		:description => \"yyy\",\n		:image_url => \"zzz.jpg\")\n		product.price = -1\n		assert product.invalid?\n		assert_equal \"must be greater than or equal to 0.01\",\n		product.errors[:price].join('; ')\n		product.price = 0\n		assert product.invalid?\n		assert_equal \"must be greater than or equal to 0.01\",\n		product.errors[:price].join('; ')\n		product.price = 1\n		assert product.valid?\n	end\n\n	def new_product(image_url)\n		Product.new(:title => \"My Book Title\",\n		:description => \"yyy\",\n		:price => 1,\n		:image_url => image_url)\n	end\n\n	test \"image url\" do\n		ok = %w{ fred.gif fred.jpg fred.png FRED.JPG FRED.Jpg http://a.b.c/x/y/z/fred.gif }\n		bad = %w{ fred.doc fred.gif/more fred.gif.more}\n		ok.each do |name|\n			assert new_product(name).valid?, \"#{name} shouldn't be invalid\"\n		end\n\n		bad.each do |name|\n			assert new_product(name).invalid?, \"#{name} shouldn't be valid\"\n		end\n	end\n\nend\n",
+			"file": "test/unit/product_test.rb",
+			"file_size": 1316,
+			"file_write_time": 129765083231442253,
+			"settings":
+			{
+				"buffer_size": 1304,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "test/fixtures/products.yml",
+			"settings":
+			{
+				"buffer_size": 349,
+				"line_ending": "Unix"
+			}
+		}
 	],
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 0.0,
+		"height": 81.0,
 		"selected_items":
 		[
+			[
+				"install",
+				"Package Control: Install Package"
+			]
 		],
-		"width": 0.0
+		"width": 512.0
 	},
 	"console":
 	{
@@ -32,6 +83,15 @@
 	},
 	"file_history":
 	[
+		"/C/Sites/depot/myTest.rb",
+		"/C/Sites/depot/app/views/products/index.html.erb",
+		"/C/Sites/depot/.gitignore",
+		"/C/Sites/depot/db/seeds.rb",
+		"/C/Sites/depot/app/views/layouts/application.html.erb",
+		"/C/Sites/depot/db/migrate/20120318000543_create_products.rb",
+		"/C/Sites/depot/app/views/products/_form.html.erb",
+		"/C/Sites/depot/config/routes.rb",
+		"/C/Sites/simple/.gitignore"
 	],
 	"find":
 	{
@@ -49,6 +109,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"	"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -66,8 +127,146 @@
 	"groups":
 	[
 		{
+			"selected": 3,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "app/models/product.rb",
+					"settings":
+					{
+						"buffer_size": 350,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								149,
+								173
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby/Ruby.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "app/views/products/index.html.erb",
+					"settings":
+					{
+						"buffer_size": 732,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Rails/HTML (Rails).tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "test/functional/products_controller_test.rb",
+					"settings":
+					{
+						"buffer_size": 1174,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby/Ruby.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "test/unit/product_test.rb",
+					"settings":
+					{
+						"buffer_size": 1304,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								479,
+								479
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby/Ruby.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 111.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "test/fixtures/products.yml",
+					"settings":
+					{
+						"buffer_size": 349,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								326,
+								326
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/YAML/YAML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
 			]
 		}
 	],
@@ -77,7 +276,7 @@
 	},
 	"input":
 	{
-		"height": 0.0
+		"height": 31.0
 	},
 	"layout":
 	{
@@ -112,6 +311,66 @@
 		"height": 0.0,
 		"selected_items":
 		[
+			[
+				"pro",
+				"test/unit/product_test.rb"
+			],
+			[
+				"proy",
+				"test/fixtures/products.yml"
+			],
+			[
+				"protest",
+				"test/unit/product_test.rb"
+			],
+			[
+				"producttest",
+				"test/functional/products_controller_test.rb"
+			],
+			[
+				"productrb",
+				"app/models/product.rb"
+			],
+			[
+				"seed",
+				"db/seeds.rb"
+			],
+			[
+				"proindex",
+				"app/views/products/index.html.erb"
+			],
+			[
+				"producterb",
+				"app/views/products/index.html.erb"
+			],
+			[
+				"apper",
+				"app/views/layouts/application.html.erb"
+			],
+			[
+				"see",
+				"db/seeds.rb"
+			],
+			[
+				"form",
+				"app/views/products/_form.html.erb"
+			],
+			[
+				"create",
+				"db/migrate/20120318000543_create_products.rb"
+			],
+			[
+				"20",
+				"db/migrate/20120318000543_create_products.rb"
+			],
+			[
+				"route",
+				"config/routes.rb"
+			],
+			[
+				"",
+				".gitignore"
+			]
 		],
 		"width": 0.0
 	},
@@ -127,6 +386,6 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 150.0,
+	"side_bar_width": 205.0,
 	"status_bar_visible": true
 }
